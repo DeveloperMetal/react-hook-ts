@@ -35,10 +35,13 @@
       "jsx",
       "js"
     ],
-    "testRegex": "^.+\\.spec\\.tsx?$",
+    "testRegex": "^.+\\.specs?\\.tsx?$",
     "coveragePathIgnorePatterns": [
       "/node_modules/",
       "/test/"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setupTests.ts"
     ]
   },
   "commitlint": {
@@ -49,10 +52,14 @@
   "devDependencies": {
     "@commitlint/cli": "^8.1.0",
     "@commitlint/config-conventional": "^8.1.0",
+    "@types/enzyme": "^3.10.3",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jest": "^24.0.17",
     "@types/node": "^12.7.1",
     "commitizen": "^4.0.3",
     "cz-conventional-changelog": "3.0.2",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
     "husky": "^3.0.4",
     "jest": "^24.8.0",
     "lint-staged": "^9.2.3",
@@ -66,7 +73,11 @@
     "tslint-react": "^4.0.0",
     "typescript": "^3.5.3"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@types/react": "^16.9.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
