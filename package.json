@@ -1,0 +1,88 @@
+{
+  "name": "ts-lib",
+  "version": "0.0.0",
+  "description": "A typescript library template",
+  "main": "lib/index.js",
+  "module": "esm/index.js",
+  "author": "forellana@digithinkit.com",
+  "license": "MIT",
+  "types": "dist/index.d.ts",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "prepare": "yarn build",
+    "build:cjs": "tsc",
+    "build:es": "tsc -m esNext --outDir esm",
+    "build": "yarn build:cjs && yarn build:es",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "commit": "git-cz",
+    "lint": "tslint 'src/**/*.{ts,tsx}' -t verbose",
+    "lint:fix": "yarn lint --fix",
+    "lint:types": "tsc --noEmit",
+    "clean": "rimraf lib esm"
+  },
+  "files": [
+    "lib/",
+    "esm/"
+  ],
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "moduleFileExtensions": [
+      "tsx",
+      "ts",
+      "jsx",
+      "js"
+    ],
+    "testRegex": "^.+\\.spec\\.tsx?$",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/test/"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.1.0",
+    "@commitlint/config-conventional": "^8.1.0",
+    "@types/jest": "^24.0.17",
+    "@types/node": "^12.7.1",
+    "commitizen": "^4.0.3",
+    "cz-conventional-changelog": "3.0.2",
+    "husky": "^3.0.4",
+    "jest": "^24.8.0",
+    "lint-staged": "^9.2.3",
+    "prettier": "^1.18.2",
+    "rimraf": "^3.0.0",
+    "ts-jest": "^24.0.2",
+    "tslint": "^5.18.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "tslint-react": "^4.0.0",
+    "typescript": "^3.5.3"
+  },
+  "dependencies": {},
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint:types && yarn lint-staged",
+      "pre-push": "yarn lint && yarn clean && yarn build && yarn test",
+      "prepare-commit-msg": "exec < /dev/tty && yarn commit --hook || true"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": [
+      "tslint --fix -t verbose",
+      "git add"
+    ]
+  }
+}
