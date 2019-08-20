@@ -9,6 +9,7 @@
   "types": "dist/index.d.ts",
   "typings": "dist/index.d.ts",
   "scripts": {
+    "prepublish": "yarn lint && yarn test:all && yarn build",
     "prepare": "yarn build",
     "build:cjs": "tsc",
     "build:es": "tsc -m esNext --outDir esm",
