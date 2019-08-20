@@ -66,7 +66,10 @@
   "exclude": [
     "node_modules",
     "lib",
-    "**/*.specs?.tsx?",
-    "**/*.test.tsx?"
+    "src/**/*.specs.tsx",
+    "src/**/*.specs.ts",
+    "src/**/*.spec.tsx",
+    "src/**/*.spec.ts",
+    "src/setupTests.ts"
   ]
 }
